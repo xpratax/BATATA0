@@ -1,155 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BATATA-zero</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        /* --- Estilo base --- */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BATATA-zero</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #111;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
 
-        header {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: #000;
-            box-shadow: 0 0 20px #0ff;
-        }
+    header {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: #000;
+        box-shadow: 0 0 20px #0ff;
+    }
 
-        header h1 {
-            font-size: 3rem;
-            color: #0ff;
-            text-shadow: 0 0 10px #0ff;
-        }
+    header h1 {
+        font-size: 3rem;
+        color: #0ff;
+        text-shadow: 0 0 10px #0ff;
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0;
-            gap: 1rem;
-        }
+    main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
 
-        nav button {
-            background: #0ff;
-            color: #000;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px #0ff;
-        }
+    section {
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+        cursor: pointer;
+    }
 
-        nav button:hover {
-            transform: scale(1.1);
-        }
+    section h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    ul li {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
 
-        section {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            border-radius: 10px;
-            background: rgba(0,0,0,0.3);
-            box-shadow: 0 0 15px #0ff;
-            transition: all 0.5s ease;
-        }
+    /* Neon cores */
+    .neon-green {
+        box-shadow: 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0;
+        border: 1px solid #0f0;
+    }
 
-        section h2 {
-            cursor: pointer;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #0ff;
-        }
+    .neon-blue {
+        box-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff;
+        border: 1px solid #0ff;
+    }
 
-        /* Neon azul e vermelho alternado */
-        .neon-blue {
-            box-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff;
-            border: 1px solid #0ff;
-        }
+    .neon-yellow {
+        box-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0;
+        border: 1px solid #ff0;
+    }
 
-        .neon-red {
-            box-shadow: 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00;
-            border: 1px solid #f00;
-        }
-    </style>
+    .neon-red {
+        animation: blink 1s infinite;
+        box-shadow: 0 0 20px #f00, 0 0 30px #f00, 0 0 40px #f00;
+        border: 1px solid #f00;
+    }
+
+    @keyframes blink {
+        0%, 50%, 100% { opacity: 1; }
+        25%, 75% { opacity: 0.4; }
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>BATATA-zero</h1>
-        <p>Dicas para adolescentes: hábitos, postura e riqueza em 3 meses</p>
-    </header>
 
-    <nav>
-        <button onclick="scrollToSection('fazer')">Continuar Fazendo</button>
-        <button onclick="scrollToSection('parar')">Parar de Fazer</button>
-        <button onclick="scrollToSection('evitar')">Evitar Fazer</button>
-    </nav>
+<header>
+    <h1>BATATA-zero</h1>
+    <p>Avalie seus hábitos e receba dicas personalizadas</p>
+</header>
 
-    <main>
-        <section id="fazer" class="neon-blue">
-            <h2 onclick="toggleNeon(this)">Continuar Fazendo</h2>
-            <ul>
-                <li>Estudar diariamente mesmo que pouco tempo</li>
-                <li>Exercitar-se para manter energia e foco</li>
-                <li>Guardar dinheiro e investir em pequenas oportunidades</li>
-                <li>Ler sobre finanças pessoais e mindset</li>
-            </ul>
-        </section>
+<main id="content">
+    <section id="habitos">
+        <h2>Seus Hábitos</h2>
+        <ul id="lista-habitos"></ul>
+    </section>
+</main>
 
-        <section id="parar" class="neon-red">
-            <h2 onclick="toggleNeon(this)">Parar de Fazer</h2>
-            <ul>
-                <li>Procrastinar e adiar tarefas importantes</li>
-                <li>Gastar dinheiro sem controle</li>
-                <li>Ficar horas em redes sociais sem propósito</li>
-                <li>Negligenciar saúde e sono</li>
-            </ul>
-        </section>
+<footer style="text-align:center; padding:1rem; color:#0ff;">
+    &copy; 2025 BATATA-zero
+</footer>
 
-        <section id="evitar" class="neon-blue">
-            <h2 onclick="toggleNeon(this)">Evitar Fazer</h2>
-            <ul>
-                <li>Seguir maus hábitos de amigos sem pensar</li>
-                <li>Tomar decisões impulsivas sem planejamento</li>
-                <li>Ignorar conselhos de quem tem experiência</li>
-            </ul>
-        </section>
-    </main>
+<script>
+    // Função para perguntar hábito e retornar valor de avaliação
+    function avaliarHabito(pergunta) {
+        let resposta = prompt(pergunta);
+        if(!resposta || resposta.trim() === "") return "nenhum";
 
-    <footer style="text-align:center; padding:1rem; color:#0ff;">
-        &copy; 2025 BATATA-zero
-    </footer>
+        resposta = resposta.toLowerCase();
 
-    <!-- --- JS offline --- -->
-    <script>
-        // Alterna neon azul/vermelho ao clicar no título da seção
-        function toggleNeon(el) {
-            let section = el.parentElement;
-            if(section.classList.contains('neon-blue')){
-                section.classList.remove('neon-blue');
-                section.classList.add('neon-red');
-            } else {
-                section.classList.remove('neon-red');
-                section.classList.add('neon-blue');
+        // Avaliação simples baseada em palavras-chave
+        if(resposta.includes("sempre") || resposta.includes("diario") || resposta.includes("bom") || resposta.includes("ok")) return "bom";
+        if(resposta.includes("as vezes") || resposta.includes("medio") || resposta.includes("ok")) return "medio";
+        if(resposta.includes("raramente") || resposta.includes("ruim") || resposta.includes("mal")) return "ruim";
+        return "medio"; // padrão neutro
+    }
+
+    const perguntas = [
+        "Você estuda todos os dias? (responda: sempre, às vezes, raramente)",
+        "Você cuida da sua saúde e exercícios? (sempre, às vezes, raramente)",
+        "Você economiza ou investe dinheiro? (sempre, às vezes, raramente)",
+        "Você evita procrastinar e redes sociais sem propósito? (sempre, às vezes, raramente)"
+    ];
+
+    const lista = document.getElementById("lista-habitos");
+
+    perguntas.forEach(pergunta => {
+        const resultado = avaliarHabito(pergunta);
+
+        const li = document.createElement("li");
+        li.textContent = pergunta + " → " + resultado.toUpperCase();
+
+        // Define cor neon baseado na avaliação
+        if(resultado === "bom") li.className = "neon-green";
+        else if(resultado === "medio") li.className = "neon-blue";
+        else if(resultado === "medio") li.className = "neon-yellow"; // opcional refinamento
+        else if(resultado === "ruim") li.className = "neon-red";
+
+        // Alternar neon ao clicar
+        li.addEventListener("click", () => {
+            if(li.classList.contains('neon-green')){
+                li.classList.remove('neon-green');
+                li.classList.add('neon-red');
+            } else if(li.classList.contains('neon-red')){
+                li.classList.remove('neon-red');
+                li.classList.add('neon-green');
             }
-        }
+        });
 
-        // Scroll suave para seção
-        function scrollToSection(id){
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+        lista.appendChild(li);
+    });
+</script>
+
 </body>
 </html>
